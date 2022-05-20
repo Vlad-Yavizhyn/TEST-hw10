@@ -14,11 +14,11 @@
  */
 
 import '../css/common.css';
-// import pokemonCardTpl from '../templates/pokemon-card.hbs';
-// import API from './api-service';
-// import getRefs from './get-refs';
+import pokemonCardTpl from '../templates/pokemon-card.hbs';
+import API from './api-service';
+import getRefs from './get-refs';
 
-// const refs = getRefs();
+const refs = getRefs();
 
 // refs.searchForm.addEventListener('submit', onSearch);
 
@@ -55,16 +55,42 @@ import '../css/common.css';
 // fetch(url, options)
 //   .then(r => r.json())
 //   .then(console.log);
+// ===================================================
+
+refs.searchForm.addEventListener('submit', onSearch);
 
 
 
-fetch('https://pokeapi.co/api/v2/pokemon/2')
-  .then(response => {
-    return response.json();
-  })
-  .then(pokemon => {
-    console.log(pokemon);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+function onSearch(e) { 
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const searchQuery = form.elements.query.value
+
+  API.fetchPokemon(searchQuery)
+  .then(renderPokemonCard)
+    .catch(onFetchError)
+    .finally(() => form.reset());
+}
+
+function fetchPokemon(pokemonId) { 
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+  return fetch(url).then(response => response.json());
+}
+
+function renderPokemonCard(pokemon) { 
+const markup = pokemonCardTpl(pokemon);
+    refs.cardContainer.innerHTML = markup;
+}
+
+function onFetchError(error) { 
+  alert('Упс! Щось пішло не так, вашого покемона не знайдено')
+}
+
+
+
+// =================
+
+fetch('https://restcountries.com/v3.1/name/ukraine')
+  .then(r => r.json())
+  .then(console.log)
