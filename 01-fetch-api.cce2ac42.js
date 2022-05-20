@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"pI3e":[function(require,module,exports) {
 "use strict";require("../css/common.css"),fetch("https://pokeapi.co/api/v2/pokemon/2").then(o=>o.json()).then(o=>{console.log(o)}).catch(o=>{console.log(o)});
 },{"../css/common.css":"en75"}]},{},["pI3e"], null)
-//# sourceMappingURL=/parcel-project-template/01-fetch-api.cce2ac42.js.map
+//# sourceMappingURL=/TEST-hw10/01-fetch-api.cce2ac42.js.map

@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"Jaai":[function(require,module,exports) {
 "use strict";require("../css/common.css"),fetch("https://lpj-weather-service.herokuapp.com/weather?lat=39.916668&lon=116.383331").then(e=>e.json()).then(console.log);
 },{"../css/common.css":"en75"}]},{},["Jaai"], null)
-//# sourceMappingURL=/parcel-project-template/02-cors.1fbc5804.js.map
+//# sourceMappingURL=/TEST-hw10/02-cors.1fbc5804.js.map
